@@ -20,6 +20,13 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
         Scanner entrada = new Scanner(System.in);
+        
+        System.out.println("¿Que cuenta desea abrir?");
+            System.out.println("1 = Bancaria");
+            System.out.println("2 = Ahorro");
+            int cuenta = entrada.nextInt();
+        
+        if (cuenta == 1){    
         System.out.println("Proporcione el numero de la cuenta.");
         int numeroDeCuenta = entrada.nextInt();
         System.out.println("Proporcione el nombre del cliente.");
@@ -44,12 +51,33 @@ public class Main {
                 cuentaBancaria.Retirar(cantidad);
             }
             if (accion == 3){
-                System.out.println("GG IZI");
+                System.out.println("Fin");
                 contador = 1;
             }
             double saldo = cuentaBancaria.getSaldo();
             System.out.println(+saldo);
+            }   
+        }
+        
+        if(cuenta == 2){
+            System.out.println("Proporcione el numero de la cuenta.");
+            int numeroDeCuenta = entrada.nextInt();
+            System.out.println("Proporcione el nombre del cliente.");
+            String cliente = entrada.next();
+            CuentaDeAhorro nuevaCuenta = 
+                    new CuentaDeAhorro(numeroDeCuenta,cliente);
+            
+            System.out.println(nuevaCuenta.getSaldo());
+           nuevaCuenta.Depositar(200);
+            System.out.println(nuevaCuenta.getSaldo());
+            nuevaCuenta.corteMensual();
+            System.out.println(nuevaCuenta.getSaldo());    
+            nuevaCuenta.Retirar(500);
+            System.out.println(nuevaCuenta.getSaldo());
+            nuevaCuenta.corteMensual();
+            System.out.println(nuevaCuenta.getSaldo());
+            
         }
     }
     
-}
+}      

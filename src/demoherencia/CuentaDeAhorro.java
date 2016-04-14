@@ -4,20 +4,27 @@
  * and open the template in the editor.
  */
 package demoherencia;
+
 /**
  *
- * @author El Bryan|4t  
+ * @author El Bryan
  */
-public class CuentaBancaria {
+public class CuentaDeAhorro {
     private int numeroDeCuenta;
     private String cliente;
     private double saldo;
+    private double tasaDeInteres;
+    private double comisionPorSaldo;
     
-    public CuentaBancaria (int numeroDeCuenta, String cliente){
+    public CuentaDeAhorro(int numeroDeCuenta, String cliente){
         this.cliente = cliente;
         this.numeroDeCuenta = numeroDeCuenta;
-        this.saldo =0.0;
+        this.saldo = 1000.0;
+        this.tasaDeInteres = .25;
+        this.comisionPorSaldo = 50;
+        
     }
+    
     private void NumeroDeCuenta(int numeroDeCuenta){
         this.numeroDeCuenta = numeroDeCuenta;
     }
@@ -64,9 +71,25 @@ public class CuentaBancaria {
         return this.saldo;
     }
     
-
+    public double calcularInteres(){
+        double interesTotal = 0;
+        interesTotal  = ( (saldo * this.tasaDeInteres) /100 );
+        return interesTotal;
+    }
     
-            
+    public double comisionPorSaldo(){
+        double comision = 0;
+        if (saldo < 1000){
+            comision = 50;
+        }
+        else{
+            comision = 0;
+        }
+        return comision;
+    }
     
+    public void corteMensual(){
+        this.saldo = (saldo + this.calcularInteres()) - this.comisionPorSaldo();
+    }  
     
 }
