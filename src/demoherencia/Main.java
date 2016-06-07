@@ -31,27 +31,79 @@ public class Main {
         System.out.println("Proporcione el numero de la cuenta.");
         int numeroDeCuenta = entrada.nextInt();
         System.out.println("Proporcione el nombre del cliente.");
-        String cliente = entrada.next();
+        String nombre = entrada.next();
+        System.out.println("Proporcione el apellido del cliente.");
+        String apellido = entrada.next();
+        Cliente cliente = new Cliente(nombre, apellido);
+        
         CuentaBancaria cuentaBancaria = 
-                new CuentaBancaria(numeroDeCuenta,cliente);
+                new CuentaBancaria(numeroDeCuenta, cliente);
         int contador = 0;
         while (contador == 0){
             System.out.println("¿Que accion desea realizar?");
-            System.out.println("1 = Depositar");
-            System.out.println("2 = Retirar");
-            System.out.println("3 = Finalizar");
+            System.out.println("1 = Introducir datos personales");
+            System.out.println("2 = Proporcionar los datos del cliente");
+            System.out.println("3 = Depositar");
+            System.out.println("4 = Retirar");
+            System.out.println("5 = Finalizar");
             int accion = entrada.nextInt();
+            
             if (accion == 1){
+                System.out.println("Porporcione su fecha de nacimiento.");
+                String fechaDeNacimiento;
+                fechaDeNacimiento = entrada.nextLine();
+                fechaDeNacimiento = entrada.nextLine();
+                
+                System.out.println("Porporcione su direccion.");
+                String direccion = entrada.nextLine();
+               
+                System.out.println("Porporcione su acupacion.");
+                String acupacion= entrada.nextLine();
+                
+                System.out.println("Proporcione su telefono.");
+                String telefono= entrada.nextLine();
+                
+                System.out.println("Proporcione su email.");
+                String email= entrada.nextLine();
+                
+                
+                cliente.setFechaDeNacimiento(fechaDeNacimiento);
+                cliente.setDireccion(direccion);
+                cliente.setAcupacion(acupacion);
+                cliente.setTelefono(telefono);
+                cliente.setEmail(email);
+            }
+            
+            if (accion == 2){
+                System.out.println("El numero de la cuenta del cliente es: " 
+                        +cuentaBancaria.getNumeroDeCuenta());
+                System.out.println("El nombre del cliente es: " 
+                        +cliente.getNombre());
+                System.out.println("El apellido del cliente es: " 
+                        +cliente.getApellido());
+                System.out.println("La fecha de nacimiento del cliente es: "
+                        +cliente.getFechaDeNacimiento());
+                System.out.println("El cliente vive en: " 
+                        +cliente.getDireccion());
+                System.out.println("El cliente trabaja como: " 
+                        +cliente.getAcupacion());
+                System.out.println("El numero telefonico del cliente es: "
+                        +cliente.getTelefono());
+                System.out.println("El correo electronico es: "
+                        +cliente.getEmail());
+            }
+            
+            if (accion == 3){
                 System.out.println("¿Cuanto dinero deseas depositar?");
                 double cantidad = entrada.nextDouble();
                 cuentaBancaria.Depositar(cantidad);
             }
-            if (accion == 2){
+            if (accion == 4){
                 System.out.println("¿Cuanto dinero deseas retirar?");
                 double cantidad = entrada.nextDouble();
                 cuentaBancaria.Retirar(cantidad);
             }
-            if (accion == 3){
+            if (accion == 5){
                 System.out.println("Fin");
                 contador = 1;
             }
@@ -59,8 +111,13 @@ public class Main {
             System.out.println(+saldo);
             }   
         }
+        else {
+            System.out.println("Cuenta no disponible.");
+        }
+                
         
-        if(cuenta == 2){
+        //Codigo de CuentaDeAhorro y CuentaDeCheques
+    /*    if(cuenta == 2){
             System.out.println("Proporcione el numero de la cuenta.");
             int numeroDeCuenta = entrada.nextInt();
             System.out.println("Proporcione el nombre del cliente.");
@@ -111,6 +168,7 @@ public class Main {
             System.out.println(+saldo);
             }   
         }
+    */
     }
     
-}      
+}  

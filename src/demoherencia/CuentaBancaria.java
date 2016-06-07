@@ -6,24 +6,20 @@
 package demoherencia;
 /**
  *
- * @author El Bryan|4t  
+ * @author El Bryan|
  */
 public class CuentaBancaria {
     private int numeroDeCuenta;
-    private String cliente;
+    private Cliente cliente;
     private double saldo;
     
-    public CuentaBancaria (int numeroDeCuenta, String cliente){
+    public CuentaBancaria (int numeroDeCuenta, Cliente cliente){
         this.cliente = cliente;
         this.numeroDeCuenta = numeroDeCuenta;
         this.saldo =0.0;
     }
-    private void NumeroDeCuenta(int numeroDeCuenta){
-        this.numeroDeCuenta = numeroDeCuenta;
-    }
-    
-    private void Cliente(String cliente){
-        this.cliente = cliente;
+    public int getNumeroDeCuenta(){
+        return numeroDeCuenta;
     }
     
     public void Depositar(double cantidad){
